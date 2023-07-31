@@ -1,3 +1,6 @@
+# I added .dummy on line 15 and 16 for the multiprocessing library; commented out the numba syntactic sugar on line 435; installed the gurobi software along with academic license. That makes the code work for me.
+
+
 import numpy as np
 from numpy import linalg as la
 from scipy.spatial import ConvexHull
@@ -9,8 +12,8 @@ import time
 from functools import reduce
 from numbers import Number
 
-from multiprocessing import Pool as pyPool
-import multiprocessing
+from multiprocessing.dummy import Pool as pyPool
+import multiprocessing.dummy
 import io
 import contextlib
 
@@ -429,7 +432,7 @@ class NCLCD:
     
     
     
-    @nb.jit(nopython=False)
+    #@nb.jit(nopython=False)
     def subgradient(self, a = None, b = None):
         self.algo_name = "nonconvex_subgradient"
         if a is None:
@@ -590,7 +593,7 @@ class ConvexLCD:
         elif init_method =="given":
             phi = init_kwargs.get("phi_start")
             self.init_suffix = init_kwargs.get("init_suffix")
-#         self.phi_start = phi
+            self.phi_start = phi
         return phi
     
     def subgradient_approx(self,init_method=None,init_kwargs = dict(),initStepSize=5,stepSizeMode= "sqrt-decay-length",Nlist=None,N0list=None,thres_list= None,grid_method="uniform"):
