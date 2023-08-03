@@ -1,4 +1,4 @@
-# I added .dummy on line 15 and 16 for the multiprocessing library; commented out the numba syntactic sugar on line 435; installed the gurobi software along with academic license. That makes the code work for me.
+# I commented out the numba syntactic sugar on line 435; installed the gurobi software along with academic license. That makes the code work for me.
 
 
 import numpy as np
@@ -12,8 +12,8 @@ import time
 from functools import reduce
 from numbers import Number
 
-from multiprocessing.dummy import Pool as pyPool
-import multiprocessing.dummy
+from multiprocessing import Pool as pyPool
+import multiprocessing
 import io
 import contextlib
 
